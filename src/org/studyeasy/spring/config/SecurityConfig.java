@@ -42,6 +42,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		// ACCESS DENIED PAGE Step #2 add HTTP security for access-denied feature
 		http.exceptionHandling().accessDeniedPage("/403");
 		
+		// LOGOUT Step #1 Redirect to home page and invalidate the session in persistant_logins table
+		// LOGOUT Step #2 update the JSP page add logout buttons
+		http.logout().logoutSuccessUrl("/").logoutUrl("/")
+		.invalidateHttpSession(true);
+		
 		
 	}
 
