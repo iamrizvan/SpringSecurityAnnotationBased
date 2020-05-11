@@ -23,6 +23,11 @@
 				<td>Password:</td>
 				<td><input type='password' name='password' /></td>
 			</tr>
+			<!--  REMEMBER-ME Step #3 update login form with remember me checkbox -->
+			<tr>
+				<td>Remember me<input name="remember-me" id="remember-me"
+					type="checkbox" checked="checked" /></td>
+			</tr>
 			<tr>
 				<td colspan='2'><input name="submit" type="submit"
 					value="Login" /></td>
