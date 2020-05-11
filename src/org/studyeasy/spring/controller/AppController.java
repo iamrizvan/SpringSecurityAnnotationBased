@@ -30,4 +30,13 @@ public class AppController {
 		ModelAndView model = new ModelAndView("login");
 		return model;
 	}
+	
+	// ACCESS DENIED PAGE Step #3 add request mapping method for handling access denied requests
+	// ACCESS DENIED PAGE Step #4 add a JSP page with name "403.jsp"
+	@RequestMapping("/403")
+	public ModelAndView access403() {
+		ModelAndView model = new ModelAndView("403");
+		return model;
+	}
+	
 }

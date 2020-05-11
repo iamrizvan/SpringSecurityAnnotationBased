@@ -27,8 +27,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-		.antMatchers("/user").access("hasRole('ROLE_USER')")
-		.antMatchers("/admin").access("hasAnyRole('ROLE_ADMIN')");
+		// ACCESS DENIED PAGE Step #1 add permitAll accessibility to be able to access by ony user
+		.antMatchers("/403").access("permitAll")
+		.antMatchers("/user").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+		.antMatchers("/admin").access("hasRole('ROLE_ADMIN')");
 		http.formLogin().loginPage("/login").failureUrl("/login?error");
 		
 		// REMEMBER-ME Step #1 add HTTP security for remember-me feature
@@ -36,6 +38,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.tokenValiditySeconds(5000)
 		.key("anyKey")
 		.tokenRepository(tokenRepository());
+		
+		// ACCESS DENIED PAGE Step #2 add HTTP security for access-denied feature
+		http.exceptionHandling().accessDeniedPage("/403");
 		
 		
 	}
