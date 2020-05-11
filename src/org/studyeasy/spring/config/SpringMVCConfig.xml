@@ -8,6 +8,7 @@
    
    <!-- Adding Support for Component Scan -->
    <context:component-scan base-package="org.studyeasy.spring" />
+    <context:component-scan base-package="org.studyeasy.spring.config" />
   
    
    <!-- Configure View Resolver -->
